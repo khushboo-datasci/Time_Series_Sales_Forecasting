@@ -1,152 +1,149 @@
-Time Series Sales Forecasting
+#Time Series Sales Forecasting
+  
+A Python-based project to forecast monthly sales (2011–2014) using AR, ARIMA, and SARIMA models, enabling optimized inventory management and strategic business planning.
+
+#Project Overview
+
+This project allows users to:
+
+Load and clean historical sales data
+Aggregate daily sales into monthly sales
+Analyze trends, seasonality, and residual patterns
+Apply Box-Cox transformation and differencing to stabilize the data
+Build AR, ARIMA, and SARIMA models for forecasting
+Evaluate model performance using RMSE and MAPE
+Visualize predictions and select the best-performing model
+It demonstrates practical usage of Python, time series analysis, statsmodels, and data visualization.
 
-Overview
+#Problem Statement
 
-Forecasted monthly sales (2011–2014) for a company to optimize inventory management and support strategic business planning.
-Accurate forecasting helps reduce overstock/understock risks and enables informed operational decisions.
+Companies often face challenges in inventory management due to inaccurate sales forecasts. Overstocking or understocking leads to financial loss or missed sales opportunities.
 
-Problem Statement
+This project provides a structured approach to forecast future sales, reducing inventory risks and supporting strategic decision-making.
 
-Predict future monthly sales based on historical sales data to:
+#Objectives
 
-Optimize inventory levels
+Clean and preprocess historical sales data
+Aggregate daily sales into monthly sales
+Conduct stationarity checks and apply transformations
+Decompose the time series into trend, seasonality, and residuals
+Build and tune AR, ARIMA, and SARIMA models
+Evaluate models using RMSE and MAPE
+Visualize predictions and select the best model
 
-Support strategic business planning
+#Technologies Used
 
-Minimize operational risks related to stock management
+Python – Core programming
+Pandas & NumPy – Data handling
+Matplotlib & Seaborn – Visualization
+Statsmodels & Scipy – Time series modeling
+Sklearn – Evaluation metrics
 
-Dataset
+#Features
 
-Source: Superstore Sales Dataset
+Time series cleaning and preprocessing
+Box-Cox transformation and differencing
+Stationarity testing (ADF Test)
+Seasonal decomposition (trend, seasonality, residuals)
+Autocorrelation (ACF) and Partial Autocorrelation (PACF) analysis
+AR, ARIMA, and SARIMA forecasting
+RMSE & MAPE model evaluation
+Train/Test split visualization with predictions
 
-Features Used:
+#Graphs
 
-Order Date – date of order
+1. Original vs. Box-Cox & Differenced Data
+ Shows variance and mean stabilization after transformation.
 
-Sales – target variable
+# Box-Cox transformation
+from scipy.stats import boxcox
+df_boxcox = pd.Series(boxcox(df_train['Sales'], lmbda = 0), index = df_train.index)
+df_boxcox_diff = df_boxcox.diff()
 
-Data Processing: Aggregated daily sales to monthly sales
+# Plot original vs transformed data
+plt.figure(figsize = (14, 6))
 
-Link: [Superstore_Data.csv](/content/drive/MyDrive/Superstore_Data (1).csv)
+plt.subplot(1, 2, 1)
+sns.lineplot(data = df_train, x = 'Order Date', y = 'Sales', marker = 'o', color = 'blue')
+plt.xticks(rotation = 90)
+plt.title('Original Data')
 
-Folder Structure
-Time-Series-Sales-Forecasting/
-│
-├── data/
-│   └── Superstore_Data.csv
-├── notebooks/
-│   └── sales_forecasting.ipynb
-├── README.md
-└── requirements.txt
+plt.subplot(1, 2, 2)
+sns.lineplot(x = df_boxcox_diff.index, y = df_boxcox_diff.values, marker = 'o', color = 'blue')
+plt.xticks(rotation = 90)
+plt.title('Transformed Data [Box-Cox + Differencing]')
 
-Tools & Libraries
+plt.suptitle('Sales Data');
+plt.savefig('images/boxcox_diff_plot.png', bbox_inches='tight')  # Save plot for README
+plt.show()
 
-Programming Language: Python
+2. Seasonal Decomposition
+Shows trend, seasonality, and residuals.
 
-Data Manipulation: pandas, numpy
+from statsmodels.tsa.seasonal import seasonal_decompose
 
-Visualization: matplotlib, seaborn
+# Seasonal decomposition of original training data
+result = seasonal_decompose(df_train['Sales'])
+result.plot()
+plt.suptitle('Seasonal Decomposition of Sales')
+plt.savefig('images/seasonal_decompose_plot.png', bbox_inches='tight')  # Save plot for README
+plt.show()
 
-Time Series Modeling: statsmodels, scipy
+3. Train-Test Split with Predictions (AR, ARIMA, SARIMA)
+Compares actual sales and model predictions.
 
-Evaluation Metrics: sklearn.metrics (RMSE, MAPE)
+# Using SARIMA predictions as example
+plt.figure(figsize = (14, 6))
+sns.lineplot(data = df_train, x = df_train.index, y = df_train['Sales'], marker = 'o', color = 'blue', label = 'Train')
+sns.lineplot(data = df_test, x = df_test.index, y = df_test['Sales'], marker = 'o', color = 'green', label = 'Test')
+sns.lineplot(x = df_preds.index[train_len:], y = df_preds.values[train_len:], marker = 'o', color = 'purple', label = 'Predictions')
+plt.title('Sales Forecast: Train, Test, Predictions')
+plt.savefig('images/forecast_plot.png', bbox_inches='tight')  # Save plot for README
+plt.show()
 
-Methodology
-1. Data Preparation
+| Model  | RMSE      | MAPE (%) |
+| ------ | --------- | -------- |
+| AR     | 14,915.16 | 24.42    |
+| ARIMA  | 29,842.05 | 36.74    |
+| SARIMA | 11,661.76 | 16.82    |
 
-Converted Order Date to datetime and set as index
 
-Aggregated daily sales to monthly sales
+Observation: SARIMA is the most accurate model, suitable for monthly sales forecasting with seasonality.
 
-Visualized monthly sales trends
+Installation / Setup
 
-Sample plot:
+Clone the repository:
 
+git clone [(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting/edit/main/README.md)]
 
-2. Stationarity Analysis
 
-Performed Augmented Dickey-Fuller (ADF) test
+Navigate to the project folder:
 
-Applied Box-Cox transformation → stabilizes variance
+cd TimeSeriesSalesForecasting
 
-Applied Differencing → stabilizes mean
 
-ADF Test Plot:
+Install required libraries:
 
+pip install pandas numpy matplotlib seaborn statsmodels scipy scikit-learn
 
-3. Time Series Decomposition
 
-Decomposed data into Trend, Seasonality, Residuals
+Run the notebook or Python script in Google Colab.
 
-Visualized before and after transformation
+Step-by-Step Flow
 
-Decomposition Plots:
+1.Load and inspect the sales data
+2.Clean data, convert Order Date to datetime, sort, aggregate monthly
+3.Visualize data and perform exploratory analysis
+4.Check stationarity (ADF test), apply Box-Cox and differencing
+5.Decompose time series (trend, seasonality, residuals)
+6.Plot ACF & PACF to select model parameters
+7.Build AR, ARIMA, and SARIMA models
+8.Evaluate models using RMSE and MAPE
+9.Visualize train, test, and forecast predictions
+10.Select best-performing model (SARIMA) and draw insights
 
 
+Author
 
-
-4. Autocorrelation Analysis
-
-Generated ACF and PACF plots to identify lag orders for AR/ARIMA/SARIMA models
-
-ACF & PACF Plots:
-
-
-
-
-5. Model Building
-
-Built and evaluated the following models:
-
-Model	Description
-AR	Autoregressive Model
-ARIMA	Autoregressive Integrated Moving Average
-SARIMA	Seasonal ARIMA to capture seasonality
-
-Applied inverse transformations (Box-Cox + Differencing) to get predictions in original scale
-
-Model Evaluation
-Model	RMSE	MAPE (%)
-AR	14915.16	24.42
-ARIMA	29842.05	36.74
-SARIMA	11661.76	16.82
-
-✅ SARIMA model outperformed AR and ARIMA models, effectively capturing seasonal patterns and providing the most accurate forecasts.
-
-Results & Visualizations
-
-Forecasted vs Actual Sales:
-
-
-Transformed vs Original Data:
-
-
-Seasonal Decomposition (Trend, Seasonality, Residuals):
-
-
-Quick Start
-
-Clone the repository
-
-git clone https://github.com/yourusername/Time-Series-Sales-Forecasting.git
-
-
-Install dependencies
-
-pip install -r requirements.txt
-
-
-Run Jupyter Notebook
-
-jupyter notebook notebooks/sales_forecasting.ipynb
-
-
-Visualize results and analyze forecasts
-
-Conclusion
-
-SARIMA model best captured trend and seasonality
-
-Provides actionable insights for inventory management and strategic planning
-
-Enables optimized monthly sales forecasting for business decision-making
+Khushboo Kumari
+GitHub Profile
