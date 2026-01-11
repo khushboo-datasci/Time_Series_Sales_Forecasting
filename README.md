@@ -1,7 +1,8 @@
 # Time Series Sales Forecasting Using **AR, ARIMA & SARIMA**
 
-A Python-based time series forecasting project to predict monthly sales using historical data.
-The project compares AR, ARIMA, and SARIMA models and selects the best-performing model based on RMSE and MAPE.
+  A Python-based time series forecasting project to predict monthly sales using historical data.
+  The project compares AR, ARIMA, and SARIMA models and selects the best-performing model based on RMSE and MAPE.
+   
 ----
 ## Project Overview
 
@@ -18,12 +19,14 @@ This project demonstrates an end-to-end **time series forecasting workflow**, in
 -Model evaluation using RMSE & MAPE
 
 -Visualization of actual vs predicted sales
+
 ----------
 ## Problem Statement
 
 Accurate sales forecasting is critical for business planning and inventory management.
 Poor forecasts may lead to overstocking or stock shortages.
 This project aims to forecast future sales using statistical time series models.
+
 -----------
 
 ## Objectives
@@ -34,18 +37,20 @@ This project aims to forecast future sales using statistical time series models.
 -Identify the best model using error metrics
 
 -Visualize and interpret forecasting results
+
 ---------
 
 ## Technologies Used
 -Python
 
--Pandas, NumPy
+- Pandas, NumPy
 
--Matplotlib, Seaborn
+- Matplotlib, Seaborn
 
--Statsmodels
+- Statsmodels
 
--Scikit-learn
+- Scikit-learn
+
 -----------
 ## Project Workflow
 
@@ -62,6 +67,7 @@ This project aims to forecast future sales using statistical time series models.
 6.Evaluate models using RMSE and MAPE
 
 7.Plot actual vs predicted sales
+
 ----------
 ## Visualizations
 
@@ -90,18 +96,23 @@ This project aims to forecast future sales using statistical time series models.
 | ARIMA  | 29,842.05 | 36.74    |
 | SARIMA | 11,661.76 | 16.82    |
 
+-------
 
 **Observation:** SARIMA is the most accurate model, suitable for monthly sales forecasting with seasonality.
 
+------
+
 ## Conclusion
 
--SARIMA outperformed AR and ARIMA models
+- SARIMA outperformed AR and ARIMA models
 
--It provided the lowest forecasting error
+- It provided the lowest forecasting error
 
--Suitable for sales data with clear seasonality
+- Suitable for sales data with clear seasonality
 
--Useful for business forecasting and decision-making
+- Useful for business forecasting and decision-making
+
+---------------
 
 ## How to Run the Project 
 
@@ -111,22 +122,31 @@ This project aims to forecast future sales using statistical time series models.
 
 3.Time_Series_Project.ipynb
 
+--------------
  
 git clone [(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting/edit/main/README.md)]
+
+-----------
 
 ## Repository Structure
 
 TimeSeriesSalesForecasting/
 │
 ├── images/
+
 │   ├── original_timeseries.png
+
 │   ├── train_test_split.png
+
 │   ├── seasonal_decomposition.png
+
 │   └── final_forecast.png
 │
 ├── Time_Series_Project.ipynb
+
 ├── README.md
 
+-----------
 **Author**
 
 **Khushboo Kumari**
