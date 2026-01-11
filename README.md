@@ -1,9 +1,9 @@
-#Time Series Sales Forecasting Using **AR, ARIMA & SARIMA**
+# Time Series Sales Forecasting Using **AR, ARIMA & SARIMA**
 
 A Python-based time series forecasting project to predict monthly sales using historical data.
 The project compares AR, ARIMA, and SARIMA models and selects the best-performing model based on RMSE and MAPE.
 ----
-##Project Overview
+## Project Overview
 
 This project demonstrates an end-to-end **time series forecasting workflow**, including:
 
@@ -19,14 +19,14 @@ This project demonstrates an end-to-end **time series forecasting workflow**, in
 
 -Visualization of actual vs predicted sales
 ----------
-##Problem Statement
+## Problem Statement
 
 Accurate sales forecasting is critical for business planning and inventory management.
 Poor forecasts may lead to overstocking or stock shortages.
 This project aims to forecast future sales using statistical time series models.
 -----------
 
-##Objectives
+## Objectives
 -Forecast future sales using historical data
 
 -Compare AR, ARIMA, and SARIMA models
@@ -36,7 +36,7 @@ This project aims to forecast future sales using statistical time series models.
 -Visualize and interpret forecasting results
 ---------
 
-##Technologies Used
+## Technologies Used
 -Python
 
 -Pandas, NumPy
@@ -47,7 +47,7 @@ This project aims to forecast future sales using statistical time series models.
 
 -Scikit-learn
 -----------
-##Project Workflow
+## Project Workflow
 
 1.Load and preprocess sales data
 
@@ -63,7 +63,7 @@ This project aims to forecast future sales using statistical time series models.
 
 7.Plot actual vs predicted sales
 ----------
-#Visualizations
+## Visualizations
 
 1.**Original Sales Time Series**
 
@@ -71,17 +71,17 @@ This project aims to forecast future sales using statistical time series models.
 
 2.**Train–Test Split Visualization **
 
-     ![Train Test Split](images/train_test_split.png)
+  ![Train Test Split](images/train_test_split.png)
 
 3.** Seasonal Decomposition**
 
-     ![Seasonal Decomposition](images/seasonal_decomposition.png)
+  ![Seasonal Decomposition](images/seasonal_decomposition.png)
 
 4.**Final Sales Forecast (SARIMA vs Actual)**
 
-    ![Final Sales Forecast](images/final_forecast.png)
+  ![Final Sales Forecast](images/final_forecast.png)
 
-##Model Performance Comparison
+## Model Performance Comparison
 
 
 | Model  | RMSE      | MAPE (%) |
@@ -93,7 +93,7 @@ This project aims to forecast future sales using statistical time series models.
 
 **Observation:** SARIMA is the most accurate model, suitable for monthly sales forecasting with seasonality.
 
-##Conclusion
+## Conclusion
 
 -SARIMA outperformed AR and ARIMA models
 
@@ -103,7 +103,7 @@ This project aims to forecast future sales using statistical time series models.
 
 -Useful for business forecasting and decision-making
 
-##How to Run the Project 
+## How to Run the Project 
 
 1.(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting)
 
@@ -114,7 +114,7 @@ This project aims to forecast future sales using statistical time series models.
  
 git clone [(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting/edit/main/README.md)]
 
-##Repository Structure
+## Repository Structure
 
 TimeSeriesSalesForecasting/
 │
