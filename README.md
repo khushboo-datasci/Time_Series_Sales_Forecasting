@@ -8,17 +8,17 @@
 
 This project demonstrates an end-to-end **time series forecasting workflow**, including:
 
--Data preprocessing and aggregation
+- Data preprocessing and aggregation
 
--Train–test split for time series
+- Train–test split for time series
 
--Trend and seasonality analysis
+- Trend and seasonality analysis
 
--Building AR, ARIMA, and SARIMA models
+- Building AR, ARIMA, and SARIMA models
 
--Model evaluation using RMSE & MAPE
+- Model evaluation using RMSE & MAPE
 
--Visualization of actual vs predicted sales
+- Visualization of actual vs predicted sales
 
 ----------
 ## Problem Statement
@@ -30,18 +30,18 @@ This project aims to forecast future sales using statistical time series models.
 -----------
 
 ## Objectives
--Forecast future sales using historical data
+- Forecast future sales using historical data
 
--Compare AR, ARIMA, and SARIMA models
+- Compare AR, ARIMA, and SARIMA models
 
--Identify the best model using error metrics
+- Identify the best model using error metrics
 
--Visualize and interpret forecasting results
+- Visualize and interpret forecasting results
 
 ---------
 
 ## Technologies Used
--Python
+- Python
 
 - Pandas, NumPy
 
