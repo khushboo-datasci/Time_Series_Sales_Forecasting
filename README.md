@@ -75,11 +75,11 @@ This project aims to forecast future sales using statistical time series models.
 
   ![Original Sales Time Series](images/original_timeseries.png)
 
-2.**Train–Test Split Visualization **
+2.**Train–Test Split Visualization**
 
   ![Train Test Split](images/train_test_split.png)
 
-3.** Seasonal Decomposition**
+3.**Seasonal Decomposition**
 
   ![Seasonal Decomposition](images/seasonal_decomposition.png)
 
