@@ -150,7 +150,6 @@ TimeSeriesSalesForecasting/
 **Author**
 
 **Khushboo Kumari**
+
 GitHub: https://github.com/khushboo-datasci
 
-
-GitHub Profile
