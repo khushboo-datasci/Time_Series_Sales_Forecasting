@@ -1,105 +1,88 @@
-#Time Series Sales Forecasting
-  
-A Python-based project to forecast monthly sales (2011–2014) using AR, ARIMA, and SARIMA models, enabling optimized inventory management and strategic business planning.
+#Time Series Sales Forecasting Using **AR, ARIMA & SARIMA**
 
-#Project Overview
+A Python-based time series forecasting project to predict monthly sales using historical data.
+The project compares AR, ARIMA, and SARIMA models and selects the best-performing model based on RMSE and MAPE.
+----
+##Project Overview
 
-This project allows users to:
+This project demonstrates an end-to-end **time series forecasting workflow**, including:
 
-Load and clean historical sales data
-Aggregate daily sales into monthly sales
-Analyze trends, seasonality, and residual patterns
-Apply Box-Cox transformation and differencing to stabilize the data
-Build AR, ARIMA, and SARIMA models for forecasting
-Evaluate model performance using RMSE and MAPE
-Visualize predictions and select the best-performing model
-It demonstrates practical usage of Python, time series analysis, statsmodels, and data visualization.
+-Data preprocessing and aggregation
 
-#Problem Statement
+-Train–test split for time series
 
-Companies often face challenges in inventory management due to inaccurate sales forecasts. Overstocking or understocking leads to financial loss or missed sales opportunities.
+-Trend and seasonality analysis
 
-This project provides a structured approach to forecast future sales, reducing inventory risks and supporting strategic decision-making.
+-Building AR, ARIMA, and SARIMA models
 
-#Objectives
+-Model evaluation using RMSE & MAPE
 
-Clean and preprocess historical sales data
-Aggregate daily sales into monthly sales
-Conduct stationarity checks and apply transformations
-Decompose the time series into trend, seasonality, and residuals
-Build and tune AR, ARIMA, and SARIMA models
-Evaluate models using RMSE and MAPE
-Visualize predictions and select the best model
+-Visualization of actual vs predicted sales
+----------
+##Problem Statement
 
-#Technologies Used
+Accurate sales forecasting is critical for business planning and inventory management.
+Poor forecasts may lead to overstocking or stock shortages.
+This project aims to forecast future sales using statistical time series models.
+-----------
 
-Python – Core programming
-Pandas & NumPy – Data handling
-Matplotlib & Seaborn – Visualization
-Statsmodels & Scipy – Time series modeling
-Sklearn – Evaluation metrics
+##Objectives
+-Forecast future sales using historical data
 
-#Features
+-Compare AR, ARIMA, and SARIMA models
 
-Time series cleaning and preprocessing
-Box-Cox transformation and differencing
-Stationarity testing (ADF Test)
-Seasonal decomposition (trend, seasonality, residuals)
-Autocorrelation (ACF) and Partial Autocorrelation (PACF) analysis
-AR, ARIMA, and SARIMA forecasting
-RMSE & MAPE model evaluation
-Train/Test split visualization with predictions
+-Identify the best model using error metrics
 
-#Graphs
+-Visualize and interpret forecasting results
+---------
 
-1. Original vs. Box-Cox & Differenced Data
- Shows variance and mean stabilization after transformation.
+##Technologies Used
+-Python
 
-# Box-Cox transformation
-from scipy.stats import boxcox
-df_boxcox = pd.Series(boxcox(df_train['Sales'], lmbda = 0), index = df_train.index)
-df_boxcox_diff = df_boxcox.diff()
+-Pandas, NumPy
 
-# Plot original vs transformed data
-plt.figure(figsize = (14, 6))
+-Matplotlib, Seaborn
 
-plt.subplot(1, 2, 1)
-sns.lineplot(data = df_train, x = 'Order Date', y = 'Sales', marker = 'o', color = 'blue')
-plt.xticks(rotation = 90)
-plt.title('Original Data')
+-Statsmodels
 
-plt.subplot(1, 2, 2)
-sns.lineplot(x = df_boxcox_diff.index, y = df_boxcox_diff.values, marker = 'o', color = 'blue')
-plt.xticks(rotation = 90)
-plt.title('Transformed Data [Box-Cox + Differencing]')
+-Scikit-learn
+-----------
+##Project Workflow
 
-plt.suptitle('Sales Data');
-plt.savefig('images/boxcox_diff_plot.png', bbox_inches='tight')  # Save plot for README
-plt.show()
+1.Load and preprocess sales data
 
-2. Seasonal Decomposition
-Shows trend, seasonality, and residuals.
+2.Convert data into time series format
 
-from statsmodels.tsa.seasonal import seasonal_decompose
+3.Split data into training and testing sets
 
-# Seasonal decomposition of original training data
-result = seasonal_decompose(df_train['Sales'])
-result.plot()
-plt.suptitle('Seasonal Decomposition of Sales')
-plt.savefig('images/seasonal_decompose_plot.png', bbox_inches='tight')  # Save plot for README
-plt.show()
+4.Analyze trend and seasonality
 
-3. Train-Test Split with Predictions (AR, ARIMA, SARIMA)
-Compares actual sales and model predictions.
+5.Build AR, ARIMA, and SARIMA models
 
-# Using SARIMA predictions as example
-plt.figure(figsize = (14, 6))
-sns.lineplot(data = df_train, x = df_train.index, y = df_train['Sales'], marker = 'o', color = 'blue', label = 'Train')
-sns.lineplot(data = df_test, x = df_test.index, y = df_test['Sales'], marker = 'o', color = 'green', label = 'Test')
-sns.lineplot(x = df_preds.index[train_len:], y = df_preds.values[train_len:], marker = 'o', color = 'purple', label = 'Predictions')
-plt.title('Sales Forecast: Train, Test, Predictions')
-plt.savefig('images/forecast_plot.png', bbox_inches='tight')  # Save plot for README
-plt.show()
+6.Evaluate models using RMSE and MAPE
+
+7.Plot actual vs predicted sales
+----------
+#Visualizations
+
+1.**Original Sales Time Series**
+
+  ![Original Sales Time Series](images/original_timeseries.png)
+
+2.**Train–Test Split Visualization **
+
+     ![Train Test Split](images/train_test_split.png)
+
+3.** Seasonal Decomposition**
+
+     ![Seasonal Decomposition](images/seasonal_decomposition.png)
+
+4.**Final Sales Forecast (SARIMA vs Actual)**
+
+    ![Final Sales Forecast](images/final_forecast.png)
+
+##Model Performance Comparison
+
 
 | Model  | RMSE      | MAPE (%) |
 | ------ | --------- | -------- |
@@ -108,42 +91,46 @@ plt.show()
 | SARIMA | 11,661.76 | 16.82    |
 
 
-Observation: SARIMA is the most accurate model, suitable for monthly sales forecasting with seasonality.
+**Observation:** SARIMA is the most accurate model, suitable for monthly sales forecasting with seasonality.
 
-Installation / Setup
+##Conclusion
 
-Clone the repository:
+-SARIMA outperformed AR and ARIMA models
 
+-It provided the lowest forecasting error
+
+-Suitable for sales data with clear seasonality
+
+-Useful for business forecasting and decision-making
+
+##How to Run the Project 
+
+1.(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting)
+
+2.pip install pandas numpy matplotlib seaborn statsmodels scikit-learn
+
+3.Time_Series_Project.ipynb
+
+ 
 git clone [(https://github.com/khushboo-datasci/Time_Series_Sales_Forecasting/edit/main/README.md)]
 
+##Repository Structure
 
-Navigate to the project folder:
+TimeSeriesSalesForecasting/
+│
+├── images/
+│   ├── original_timeseries.png
+│   ├── train_test_split.png
+│   ├── seasonal_decomposition.png
+│   └── final_forecast.png
+│
+├── Time_Series_Project.ipynb
+├── README.md
 
-cd TimeSeriesSalesForecasting
+**Author**
 
-
-Install required libraries:
-
-pip install pandas numpy matplotlib seaborn statsmodels scipy scikit-learn
-
-
-Run the notebook or Python script in Google Colab.
-
-Step-by-Step Flow
-
-1.Load and inspect the sales data
-2.Clean data, convert Order Date to datetime, sort, aggregate monthly
-3.Visualize data and perform exploratory analysis
-4.Check stationarity (ADF test), apply Box-Cox and differencing
-5.Decompose time series (trend, seasonality, residuals)
-6.Plot ACF & PACF to select model parameters
-7.Build AR, ARIMA, and SARIMA models
-8.Evaluate models using RMSE and MAPE
-9.Visualize train, test, and forecast predictions
-10.Select best-performing model (SARIMA) and draw insights
+**Khushboo Kumari**
+GitHub: https://github.com/khushboo-datasci
 
 
-Author
-
-Khushboo Kumari
 GitHub Profile
